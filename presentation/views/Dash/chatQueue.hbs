@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="ui two column centered">
+        <div class="ui purple segment">
+            <a class="ui purple ribbon label">Colas Chat</a>
+            <br>
+            <br>
+            <div class="ui column centered grid">
+                <table class="ui celled small hover compact table" id="tbl_queue">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Fecha de Inicio</th>
+                            <th>Turno</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <td>" + queue[i].CustomerId.Name + "</td>
+                        <td>" + queue[i].CustomerId?.Phone + "</td>
+                        <td>" + queue[i].CustomerId.email + "</td>
+                        <td>" + queue[i].CustomerId.email + "</td>
+
+                        {{#each response}}
+                        <tr>
+                            <td>
+                                {{agent.CustomerId.Names}}
+                            </td>
+                            <td>
+                                {{this.CustomerId.Login}}
+                            </td>
+                            <td>
+
+                                {{#ifCond agent.status 1}}
+                                Chat
+                                {{else}}
+                                {{#ifCond agent.status 2}}
+                                Disponible
+                                {{else}}
+                                Detenido
+                                {{/ifCond }}
+                                {{/ifCond }}
+
+                            </td>
+                            <td>
+                                {{ToStringF this.CreatedAt }}
+                            </td>
+                            <td>
+                                {{ToStringF this.LastChatAssigned }}
+
+                            </td>
+                            <td>
+                                {{this.ActiveChats}}
+                            </td>
+                            <td>
+                                {{this.CloseChats}}
+                            </td>
+                            <td>
+                                <button class="ui icon red button">
+                                    <i class="cut icon"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+
+                        {{/each}}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

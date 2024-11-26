@@ -1,0 +1,93 @@
+<!--index.html-->
+<%- include('../layouts/head.ejs') %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <title>Simple Chat App</title>
+</head>
+
+<body>
+
+    <div class="ui top attached menu purple inverted">
+        <div class="ui dropdown icon item">
+          <i class="wrench icon"></i>
+          <div class="menu">
+            <div class="item">
+              <i class="dropdown icon"></i>
+              <span class="text">New</span>
+              <div class="menu">
+                <div class="item">Document</div>
+                <div class="item">Image</div>
+              </div>
+            </div>
+            <div class="item">
+              Open...
+            </div>
+            <div class="item">
+              Save...
+            </div>
+            <div class="item">Edit Permissions</div>
+            <div class="divider"></div>
+            <div class="header">
+              Export
+            </div>
+            <div class="item">
+              Share...
+            </div>
+          </div>
+        </div>
+        <div class="item"><%= Customer.Names %></div>
+        <div class="right menu">
+          <div class="ui right aligned category search item">
+            <div class="ui transparent icon input">
+              <input class="prompt" type="text" style="color:#fff" placeholder="buscar palabra">
+              <i class="search link icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ui bottom attached segment">
+
+        <!-- list of the chats -->
+
+        <div class="ui comments" id="chatroom">
+            <div class="comment">
+                <a class="avatar">
+                    <img src="/images/demo/avatar/tom.jpg">
+                </a>
+                <div class="content">
+                    <a class="author">Christian Rocha</a>
+                    <div class="metadata">
+                        <div class="date">2 days ago</div>
+                    </div>
+                    <div class="text">
+                        I re-tweeted this.
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui reply form">
+            <div class="field">
+                <div id="input_zone">
+                    <input id="message" class="vertical-align custom-input"  value="" type="text" />
+                    <button id="send_message" class="button ui red" type="button">Enviar</button>
+                </div>
+            </div>
+            <div class="ui primary submit labeled icon button">
+                <i class="icon edit"></i> Terminar chat
+            </div>
+        </div>
+      </div>
+
+      <script>
+        const UserId = "<%= Customer.id %>",
+            UserName = "<%= Customer.Name %>";
+    </script>
+    <%- include('../layouts/footer.ejs') %> 
+    <!--jQuery script-->
+
+</body>
+</html>

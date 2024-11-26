@@ -1,0 +1,99 @@
+<script src="/js/socket.io-3.0.1.min.js"></script>
+    <title>Suma Movil Chat.</title>
+</head>
+
+<body>
+
+    <div class="ui top attached menu  inverted" style="background: #00729F;">
+        <!-- <div class="ui dropdown icon item">
+          <i class="wrench icon"></i>
+          <div class="menu">
+            <div class="item">
+              <i class="dropdown icon"></i>
+              <span class="text">New</span>
+              <div class="menu">
+                <div class="item">Document</div>
+                <div class="item">Image</div>
+              </div>
+            </div>
+            <div class="item">
+              Open...
+            </div>
+            <div class="item">
+              Save...
+            </div>
+            <div class="item">Edit Permissions</div>
+            <div class="divider"></div>
+            <div class="header">
+              Export
+            </div>
+            <div class="item">
+              Share...
+            </div>
+          </div>
+        </div> -->
+        <div class="item">{{Customer.Name}}</div>
+        <!-- <div class="right menu">
+          <div class="ui right aligned category search item">
+            <div class="ui transparent icon input">
+              <input class="prompt" type="text" style="color:#fff" placeholder="buscar palabra">
+              <i class="search link icon"></i>
+            </div>
+            <div class="results"></div>
+          </div>
+        </div> -->
+      </div>
+      <div class="ui bottom attached segment">
+
+        <!-- list of the chats -->
+
+        <div class="ui comments" id="chatroom">
+            <div class="comment">
+                <a class="avatar">
+                    <img src="/images/demo/avatar/tom.jpg">
+                </a>
+                <div class="content">
+                    <a class="author">Christian Rocha</a>
+                    <div class="metadata">
+                        <div class="date">2 days ago</div>
+                    </div>
+                    <div class="text">
+                        I re-tweeted this.
+                    </div>
+                    <div class="actions">
+                        <a class="reply">Reply</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="ui reply form">
+            <div class="field">
+                <div id="input_zone">
+                    <input id="message" class="vertical-align custom-input"  value="" type="text" />
+                    <button id="send_message" class="button ui red" style="margin-top: 10px" type="button">Enviar</button>
+                </div>
+            </div>
+            <div class="ui primary submit labeled icon button" id="finalizarChat">
+                <i class="icon edit"></i> Terminar chat
+            </div>
+        </div>
+      </div>
+
+      <script>
+        const 
+            UserId   = "{{Customer.id}}",
+            RoomId   = "{{RoomId}}",
+            QueueId  = "{{QueueId}}",
+            Status  =  {{status}},
+            UserName = "{{Customer.Name}}";
+           let  Chats  = {{{Chats}}};
+    </script>
+
+{{#section 'script'}}
+    <script src="/js/ChatUtilities.js"></script>
+    <script src="/js/Customerchat.js"></script>
+{{/section }}
+
+</body>
+</html>

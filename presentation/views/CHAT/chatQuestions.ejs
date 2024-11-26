@@ -1,0 +1,88 @@
+<%- include('../layouts/head.ejs') %>
+    <div class="">
+        <h1 style="text-align: center;">Call Center - Encuesta de satisfacción</h1><br>
+        <h2 style="text-align: center;">
+            <em>Encuesta diseñada para medir el nivel de satisfacción general con la atención recibida.</em>
+        </h2>
+    </div>
+    <h3 class="ui dividing header">Chat Questions</h3>
+
+    <div class="container">
+        <div class="ui two column centered">
+            <div class="ui purple segment">
+                <br>
+                <form class="ui form">
+                    <div class="field">
+                        <label> ¿Cuál es la línea telefónica desde donde llama?</label>
+                        <input type="text" size="20" maxlength="20" required name="Phone" id="Phone">
+                    </div><br>
+                    <div class="field">
+                        <label>Elija el Canal de Contacto</label>
+                        <select class="ui selection fluid dropdown" name="Channel" id="Channel" required>
+                            <option value="">Sin Seleccionar</option>
+                            <option value="Call Center">Call Center</option>
+                            <option value="Chat">Chat</option>
+                            <option value="Redes Sociales">Redes Sociales</option>
+                        </select>
+                    </div><br>
+                    <div class="field">
+                        <label> ¿Cuál es su nombre?</label>
+                        <input type="text" name="Name" id="Name">
+                    </div><br>
+                    <div class="field">
+                        <label>¿Cuál es su nivel de satisfacción general con la atención recibida en este medio de
+                            atención?</label>
+                        <select class="ui selection fluid dropdown" name="LevelOfSatisfaction" id="LevelOfSatisfaction"
+                            required>
+                            <option value="">Sin Seleccionar</option>
+                            <option value="Muy insatisfecho">Muy insatisfecho</option>
+                            <option value="Insatisfecho">Insatisfecho</option>
+                            <option value="Ni satisfecho / No insatisfecho">Ni satisfecho / No insatisfecho</option>
+                            <option value="Satisfecho">Satisfecho</option>
+                            <option value="Muy satisfecho">Muy satisfecho</option>
+                        </select>
+                    </div><br>
+
+                    <button type="button" id="send_form" class="ui purple button">Enviar</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <%- include('../layouts/agent/footer.ejs') %>
+
+        <script>
+            $('body').on('click', '#send_form', () => {
+
+                var phone = $('#Phone').val();
+                var channel = $('#Channel').val();
+                var name = $('#Name').val();
+                var levelOfSatisfaction = $('#LevelOfSatisfaction').val();
+
+                var data = {
+                    Phone: phone,
+                    Channel: channel,
+                    Name: name,
+                    LevelOfSatisfaction: levelOfSatisfaction
+                }
+
+                $.post('/Dash/questions', data)
+                    .done(() => {
+                        console.log("recibido");
+                    });
+            });
+
+
+            $('#Phone').keypress(function (tecla) {
+                // this.value = (this.value + '').replace(/[^0-9]/g, '');
+                if (tecla.charCode < 48 || tecla.charCode > 57) {
+                    return false;
+                }
+            });
+
+
+        </script>

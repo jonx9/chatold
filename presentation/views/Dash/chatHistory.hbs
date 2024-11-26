@@ -1,0 +1,104 @@
+<div class="ui container">
+    <div class="ui grid">
+        <div class="fifteen wide column document_customer">
+            <label>Filtrar la tabla por: </label>
+            <br>
+            <div class="ui input" style="width: 100%;">
+                <input type="text" placeholder="cualquier valor de la tabla" id="tableValue">
+            </div>
+        </div>
+        <div class="one wide column">
+            <br>
+            <button class="ui purple icon button" id="btn_search">
+                <i class="search icon"></i>
+            </button>
+        </div>
+
+    </div><br>
+
+    <div class="ui two column centered">
+        <div class="ui purple segment">
+            <a class="ui purple ribbon label">Histórico Chat</a>
+            <br>
+            <br>
+            <div class="ui column centered grid">
+                <table class="ui celled small hover compact table" id="tbl_history">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
+                            <th>Finalizado por</th>
+                            <th>Ver Chat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {{#each response as | item |}}
+                        <tr>
+                            <td>
+                                {{item.CustomerId.Name}}
+                            </td>
+                            <td>
+                                {{ ToStringF this.createdAt }}
+                            </td>
+
+                            <td>
+                                {{ this.CustomerId.Phone }}
+                            </td>
+                            <td>
+                                {{item.CustomerId.email}}
+                            </td>
+                            <td>
+                                {{#if item.RoomId.TypeFinishBy}}
+                                    Finalizado por {{item.RoomId.TypeFinishBy}}
+                                {{else}}
+                                    Finalizado por 2
+                                {{/if}}
+                            </td>
+                            <td>
+                                <a class="ui icon black button chatDetail" href="/Dash/detail/{{this._id}}"><i
+                                        class="eye icon"></i></a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{#section 'script'}}
+
+<script>
+
+    $('#documentCustomer').keypress(function (tecla) {
+        // this.value = (this.value + '').replace(/[^0-9]/g, '');
+        if (tecla.charCode < 48 || tecla.charCode > 57) {
+            return false;
+        }
+    });
+
+    $('#nameAgent').keypress(function (tecla) {
+        if ((tecla.charCode < 97 || tecla.charCode > 122)
+            && (tecla.charCode < 65 || tecla.charCode > 90)
+            && (tecla.charCode != 32)) {
+            return false;
+        }
+    });
+
+
+    $('body').on('click', '#btn_search', function () {
+
+        var tableValue = $('#tableValue').val().toLowerCase();
+        $('#myTable tr').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(tableValue) > -1);
+        });
+    });
+
+
+</script>
+{{/section}}

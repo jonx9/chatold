@@ -1,0 +1,63 @@
+<head>
+    <style>
+    body{
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f6f8f9+0,e5ebee+50,d7dee3+51,f5f7f9+100;White+Gloss */
+/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+44,e1e1e1+44,f6f6f6+100 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(241,241,241,1) 44%, rgba(225,225,225,1) 44%, rgba(246,246,246,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 44%,rgba(225,225,225,1) 44%,rgba(246,246,246,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 44%,rgba(225,225,225,1) 44%,rgba(246,246,246,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+      }
+      section{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      }
+      .prueba{
+      background-color: #ecf0f1;
+      padding: 25px;
+      }
+
+      
+    </style>
+</head>
+<!--index.html-->
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="ui grid stackable" id="gridInicial" >
+    <div class="one wide phone one wide tablet five wide computer column"></div>
+    <div class="fourteen wide phone fourteen wide tablet six wide computer column prueba">
+        <div class="ui stackable grid">
+            <div class="thirteen wide column"></div>
+            <div class="three wide column">
+                <img src="/images/logo_negro.png" class="ui image medium right floated">
+            </div>
+        </div>
+        <h1 class="ui inverted header centered" style="color:#333">
+            Adminitrador de chat Uno27
+        </h1>
+        <form class="ui large form transparent " method="POST" action="/Auth/loginPost" >
+            <div class="ui form">
+                <div class="field">
+                    <div class="ui left icon transparente input">
+                        <i class="user icon"></i>
+                        <input type="text" class = "", autofocus = "",placeholder="Usuario" name="login" >
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="ui left icon transparente input">
+                        <i class="lock icon"></i>
+                        <input type="password" class = "", autofocus = "",placeholder="Password" name ="password">
+                    </div>
+                </div>
+                <input type="submit" name="send" value="Ingresar" class="ui fluid large purple submit button" />
+            </div>
+        </form>
+    </div>
+</div>

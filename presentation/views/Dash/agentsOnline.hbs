@@ -1,0 +1,75 @@
+  <div class="container">
+    <div class="ui two column centered">
+      <div class="ui purple segment">
+        <a class="ui purple ribbon label">Agentes en línea</a>
+        <br>
+        <br>
+        <div class="ui column centered grid">
+          <table class="ui celled small hover compact table" border="1">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Login</th>
+                <th>Estado</th>
+                <th>Fecha conexion</th>
+                <th>Fecha ultimo Chat</th>
+                <th>Chats Activo</th>
+                <th>Chats cerrados</th>
+                <th>Desconectar</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each response as | agent |}}
+                <tr>
+                    <td>
+                     {{agent.AgentId.Names}}
+                    </td>
+                    <td>
+                      {{this.AgentId.Login}}
+                    </td>
+                    <td>
+                    
+                      {{#ifCond agent.status 1}}
+                       Chat
+                       {{else}}
+                       {{#ifCond agent.status 2}}
+                        Disponible
+                        {{else}}
+                        Detenido
+                       {{/ifCond }}
+                      {{/ifCond }}
+                      
+                    </td>
+                    <td>
+                      {{ToStringF this.CreatedAt }}
+                    </td>
+                    <td>
+                      {{ToStringF this.LastChatAssigned }}
+
+                    </td>
+                    <td>
+                      {{this.ActiveChats}}
+                    </td>
+                    <td>
+                      {{this.CloseChats}}
+                    </td>
+                    <td>
+                       <button class="ui icon red button">
+                        <i class="cut icon"></i>
+                      </button>
+                    </td>
+ 
+                </tr>
+
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  {{#section 'script'}}
+
+  {{/section}}

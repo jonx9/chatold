@@ -1,0 +1,60 @@
+
+                      <div class="ui bottom attached segment " id="chatFormFull" style="display: none;">
+
+                        <!-- list of the chats -->
+                          <div >
+                            <Table class="ui table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Teléfono</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="Userdata">
+                                    <tr>
+                                        <td id="Userdata_Nombre"></td>
+                                        <td id="Userdata_Tel"></td>
+                                        <td id="Userdata_Email"></td>
+                                    </tr>
+                                </tbody>
+                            </Table>
+                        </div>              
+                        <div class="ui comments" id="chatroom"  >
+
+                        </div>
+                        <div class="ui reply form">
+                            <div class="field">
+                                <div id="input_zone">
+                                    <input id="message" class="vertical-align custom-input"  value="" type="text" />
+                                    <br>
+                                    <button id="send_message" class="button ui red" type="button">Enviar</button>
+
+                            </div>
+                        </div>
+
+                        </div>
+                      </div>
+
+                </div>
+            </div>           
+    
+
+               
+<script>
+
+    const UserId = "{{agent._id}}",
+        UserName = "{{agent.AgentId.Names}}",
+        status = "{{status}}",
+        Tipifications = {{{Tipifications}}};
+        let ChatData = [];
+        {{#if Chats}}
+          ChatData =  {{{Chats}}};
+        {{/if}}
+</script>
+
+  {{#section 'script'}}
+
+  {{/section}}
+
+<!-- <script src="/js/main.js"></script> -->

@@ -1,0 +1,87 @@
+<%- include('../layouts/head.ejs') %>
+
+	<div class="container">
+		<div class="ui two column centered">
+			<div class="ui purple segment">
+				<div class="form-group col-sm-12">
+					<div>
+						<h4 class="enlacesfavoritos">¡Bienvenido!</h4>
+					</div>
+
+					<h5>Ahora puedes realizar tus consultas y solicitudes a tráves de nuestro chat</h5>
+					<h5 class="resaltado">Recuerda el horario de atención es:</h5>
+					<h5>Lunes a sábado de 08:00 a 16:00</h5>
+				</div>
+
+				<br>
+				<form class="ui form" id="chatForm" action="/Customer/register" method="POST">
+					<div class="field">
+						<label>Nombre:</label>
+						<input type="text" required size="20" maxlength="50" name="Name" id="Name"
+							placeholder="Ingresa su nombre">
+					</div><br>
+					<div class="field">
+						<label>Teléfono:</label>
+						<input type="text" size="20" maxlength="20" required name="Phone" id="Phone" placeholder="Ingresa su teléfono">
+					</div><br>
+					<div class="field">
+						<label>Correo electrónico:</label>
+						<input type="email" required name="Email" id="Email" placeholder="Ingresa un correo válido">
+					</div><br>
+
+
+					<div class="field">
+						<div class="ui checkbox">
+							<input type="checkbox" name="example" required>
+							<label>
+								Al seleccionar esta casilla autorizas y aceptas de forma expresa, el registro, uso y
+								almacenamiento de tus datos personales, de acuerdo con nuestra <a style="color:#1982A6;"
+									class="form-check-label" for="exampleCheck1"
+									href="https://sumamovil.com.co/proteccion-de-datos-personales/"
+									target="_politica">política de protección de datos</a>
+							</label><br>
+						</div><br>
+					</div>
+
+					<button  id="send_form" class="ui purple button">Enviar</button>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+
+	<%- include('../layouts/agent/footer.ejs') %>
+
+		<script type="text/javascript">
+
+			$('#Phone').keypress(function (tecla) {
+				// this.value = (this.value + '').replace(/[^0-9]/g, '');
+				if (tecla.charCode < 48 || tecla.charCode > 57) {
+					return false;
+				}
+			});
+
+			$('#Name').keypress(function (tecla) {
+				if ((tecla.charCode < 97 || tecla.charCode > 122)
+					&& (tecla.charCode < 65 || tecla.charCode > 90)
+					&& (tecla.charCode != 32)) {
+					return false;
+				}
+			});
+
+
+			var $myForm = $('#chatForm');
+
+			$("#send_form").click(function (event) {
+
+				if (!$myForm[0].checkValidity()) {
+					console.log("Formulario no válido");
+
+				} else {
+					$myForm.submit();
+				}
+			});
+
+
+		</script>
